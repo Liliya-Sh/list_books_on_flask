@@ -1,0 +1,12 @@
+{% extends "index.html" %}
+
+{% block content %}
+  <h1>Все жанры</h1>
+
+    {% for genre in genres %}
+      <div class="content">
+        <a href="{{ url_for('books_by_genre', genre_id=genre.id) }}"> {{ genre.name }} </a>
+      </div>
+    {% endfor %}
+
+{% endblock %}

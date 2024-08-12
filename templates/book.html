@@ -1,0 +1,25 @@
+{% extends "index.html" %}
+
+{% block content %}
+  <div class="content">
+    <h1>{{ book.name }} </h1>
+
+      <p><a href="{{ url_for('books_by_author', author_id=book.author.id) }}">
+          <span class="properties"> Автор: </span>{{ book.author.fullname }}</a>
+      </p>
+      <p><a href="{{ url_for('books_by_genre', genre_id=book.genre.id) }}">
+           <span class="properties"> Жанр: </span>{{ book.genre.name }}</a>
+      </p>
+      <p> <span class="properties">Аннотация: </span>{{ book.abstract }} </p>
+      <p> <span class="properties">Год публикации: </span>{{ book.year_of_publication }}</p>
+      <p> <span class="properties">Количество страниц: </span>{{ book.number_of_pages }}</p>
+
+      <div class="btn_read">
+        <form action="/read_status/{{book.id}}/" method="POST" style="display:inline">
+          <input type="hidden" name="book_id" value="1">
+          <input class="button" type="submit" value="{% if book.is_read %}Не прочитана{% else %}Прочитана{% endif %}">
+        </form>
+      </div>
+
+  </div>
+{% endblock %}

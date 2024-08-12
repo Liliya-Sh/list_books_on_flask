@@ -1,0 +1,21 @@
+{% extends "index.html" %}
+
+{% block content %}
+  <h2> {{ genre_name }}</h2>
+  {% for book in books %}
+    <div class="content">
+      <p><span class="properties"> Название книги:</span>
+        <a href="{{ url_for('book_detail', book_id=book.id) }}"> {{ book.name }}</a>
+      </p>
+      <p><span class="properties"> Автор: </span>
+        <a href="{{ url_for('books_by_author', author_id=book.author.id) }}">{{ book.author.fullname }}</a>
+      </p>
+      <div class="btn_read">
+        <form action="/read_status/{{book.id}}/" method="POST" style="display:inline">
+          <input type="hidden" name="book_id" value="1">
+          <input class="button" type="submit" value="{% if book.is_read %}Не прочитана{% else %}Прочитана{% endif %}">
+        </form>
+      </div>
+    </div>
+  {% endfor %}
+{% endblock %}

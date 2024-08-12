@@ -1,0 +1,12 @@
+{% extends "index.html" %}
+
+{% block content %}
+  <h1>Все авторы</h1>
+
+    {% for author in authors %}
+      <div class="content">
+        <a href="{{ url_for('books_by_author', author_id=author.id) }}"> {{ author.fullname }} </a>
+      </div>
+    {% endfor %}
+
+{% endblock %}

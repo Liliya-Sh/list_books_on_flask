@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Список книг</title>
+    <link type="text/css" href="{{ url_for('static', filename='css/styles.css')}}" rel="stylesheet" />
+</head>
+<body>
+    <div class="topnav">
+        <div class="topnav_menu">
+            <a href="{{ url_for('add_book') }}">Добавить новую книгу</a>
+            <a href="{{ url_for('all_genres') }}">Жанры</a>
+            <a href="{{ url_for('all_authors') }}">Авторы</a>
+            <a href="{{ url_for('all_books') }}">Все книги</a>
+        </div>
+    </div>
+    <div class="wrapper">
+        {% block content %} {% endblock %}
+    </div>
+</body>
