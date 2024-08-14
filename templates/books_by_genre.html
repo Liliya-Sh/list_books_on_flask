@@ -13,7 +13,7 @@
       <div class="btn_read">
         <form action="/read_status/{{book.id}}/" method="POST" style="display:inline">
           <input type="hidden" name="book_id" value="1">
-          <input class="button" type="submit" value="{% if book.is_read %}Не прочитана{% else %}Прочитана{% endif %}">
+          <input class="button" type="submit" value="{% if book.is_read %}Прочитана{% else %}Не прочитана{% endif %}">
         </form>
       </div>
     </div>

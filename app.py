@@ -4,6 +4,7 @@ from flask import Flask, render_template, request, redirect, flash
 import re
 
 from database import Book, Genre, Author, db
+from data import fill_db
 
 app = Flask(__name__)
 
@@ -14,7 +15,9 @@ db.init_app(app)
 
 # Создаем таблицы
 with app.app_context():
+    db.drop_all()
     db.create_all()
+    fill_db() #Добавляем данные в БД
 
 
 @app.route("/")
