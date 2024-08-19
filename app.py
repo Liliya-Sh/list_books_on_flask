@@ -21,12 +21,18 @@ with app.app_context():
 
 
 @app.route("/")
+def home():
+    """Главная страница. 7 книг, которые были добавлены последними."""
+    query = db.select(Book).order_by(Book.added.desc()).limit(7)
+    books = db.session.execute(query).scalars().all()
+
+    return render_template("home.html", books=books)
+
+
+@app.route("/all_books/")
 def all_books():
     """Просмотреть список всех книг"""
-    query = db.select(Book).order_by(Book.added.desc()).limit(15)
-    books = db.session.execute(query).scalars().all()
-    # books = Book.query.all()
-
+    books = Book.query.all()
     return render_template("all_books.html", books=books)
 
 
